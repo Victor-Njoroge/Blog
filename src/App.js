@@ -1,0 +1,38 @@
+import Navbar from './components/nav'
+import Blog from './components/Blog'
+import Create from './components/Create'
+import React from 'react';
+import {BrowserRouter  as Router, Route, Switch} from 'react-router-dom';
+import BlogDetail from './components/BlogDetails'
+import NotFound from './components/NotFound'
+function App() {
+  return(
+   <Router>
+    <div className="App">
+      <Navbar/>
+      <div className="content">
+        <Switch>
+          {<Route exact path="/">
+            <Blog/>
+          </Route>}
+          <Route path="/create">
+            <Create/>
+          </Route>
+          <Route path="/blogs/:id">
+            <BlogDetail/>
+
+          </Route>
+          
+          <Route path="*">
+          <NotFound/>
+          </Route>
+          
+        </Switch>
+      </div>
+    </div>
+   </Router>
+  
+  );
+}
+
+export default App;
